@@ -1,6 +1,10 @@
 # Introduction
 This is an example test suite for the [practicesoftwaretesting](https://practicesoftwaretesting.com/) site. It contains both UI and API test cases, covering some important functionalities.
 
+# Prerequisites
+- Git [download](https://git-scm.com/install)
+- Python 3.x [download](https://www.python.org/downloads)
+
 # Set up
 To set up test suite use the following steps:
 - Clone the repository: `git clone https://github.com/m4reQ/practicesoftwaretesting-tests`
