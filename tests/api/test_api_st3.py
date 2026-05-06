@@ -33,6 +33,8 @@ def test_pt3_2():
     assert send_response.json().get('email') is not None
 
 def test_pt3_3():
+    # NOTE API should reject request with incomplete body
+    
     send_response = requests.post(
         'https://api.practicesoftwaretesting.com/messages',
         json={
