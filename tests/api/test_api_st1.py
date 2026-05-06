@@ -53,3 +53,55 @@ def test_pt1_2(random_email: str):
     # assert
     assert response.status_code == 409
     assert response.json().get('email') is not None
+
+def test_pt1_ad1(random_email: str):
+    '''
+    Tests registration using invalid data type for `phone` field.
+    '''
+
+    # arrange
+    payload = {
+        'first_name': 'foo',
+        'last_name': 'bar',
+        'address': {
+            'street': 'test 4/20',
+            'city': 'Łódź',
+            'state': 'test',
+            'country': 'Poland',
+            'postal_code': '01-001'},
+        'phone': 'testtesttest',
+        'dob': '2000-01-01',
+        'password': 'Poziomka13.',
+        'email': random_email}
+    
+    # act
+    response = requests.post(
+        'https://api.practicesoftwaretesting.com/users/register',
+        json=payload)
+    
+    # assert
+    assert response.status_code != 201
+
+def test_pt1_ad2():
+    # arrange
+    payload = {
+        'first_name': 'foo',
+        'last_name': 'bar',
+        'address': {
+            'street': 'test 4/20',
+            'city': 'Łódź',
+            'state': 'test',
+            'country': 'Poland',
+            'postal_code': '01-001'},
+        'phone': 'testtesttest',
+        'dob': '2000-01-01',
+        'password': 'Poziomka13.',
+        'email': 'foo@gmail.com'}
+    
+    # act
+    response = requests.post(
+        'https://api.practicesoftwaretesting.com/users/register',
+        json=payload)
+    
+    # assert
+    assert response.status_code != 201
