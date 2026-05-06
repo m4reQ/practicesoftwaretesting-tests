@@ -59,6 +59,8 @@ def test_pt1_ad1(random_email: str):
     Tests registration using invalid data type for `phone` field.
     '''
 
+    # NOTE According to the web version, endpoint should reject this request as phone field must be a number
+
     # arrange
     payload = {
         'first_name': 'foo',
@@ -86,6 +88,8 @@ def test_pt1_ad2(random_email: str):
     '''
     Tests registration using empty address data.
     '''
+
+    # NOTE Registration shoul fail, web version requires address data to be filled in. Nonetheless, creating user like this doesn't break any web functionality
 
     # arrange
     payload = {
