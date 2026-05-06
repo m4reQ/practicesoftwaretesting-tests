@@ -46,3 +46,33 @@ def test_pt4_3():
     products = response.json()['data']
     assert len(products) > 0
     assert all(price_min <= x['price'] <= price_max for x in products)
+
+def test_pt4_ad1():
+    '''
+    Tests if filtering API returns sane response to a malformed `between` criteria
+    '''
+
+    # NOTE API should return 422 for invalid query string that it cannot process
+
+    response = requests.get(
+        'https://api.practicesoftwaretesting.com/products',
+        params={
+            'between': f'f,-500,00000'
+        })
+    
+    assert response.status_code == 422
+
+def test_pt4_ad2():
+    '''
+    Tests if filtering API returns sane response to a malformed `sort` criteria
+    '''
+
+    # NOTE API should return 422 for invalid query string that it cannot process
+
+    response = requests.get(
+        'https://api.practicesoftwaretesting.com/products',
+        params={
+            'sort': f'quality,asc',
+        })
+    
+    assert response.status_code == 422
