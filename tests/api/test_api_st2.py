@@ -50,3 +50,22 @@ def test_pt2_3(shopping_cart: str, product: str):
     # assert
     assert response.status_code == 422
     assert response.json()['message']['errors'].get('quantity') is not None
+
+def test_pt2_ad1(shopping_cart: str, product: str):
+    '''
+    Tests adding amount of product that exceeds allowed range.
+    '''
+
+    # NOTE Invalid error is returned in case of invalid quantity being passed in
+
+    # act
+    response = requests.post(
+        f'https://api.practicesoftwaretesting.com/carts/{shopping_cart}',
+        json={
+            'product_id': product,
+            'quantity': 999999999999999999999999,
+        })
+
+    # assert
+    assert response.status_code == 422
+    assert len(response.json()['errors']['quantity']) > 0
