@@ -24,6 +24,13 @@ def shopping_cart() -> str:
     return response.json()['id']
 
 @pytest.fixture(scope='function')
+def product() -> str:
+    response = requests.get('https://api.practicesoftwaretesting.com/products')
+    assert response.status_code == 200
+
+    return response.json()['data'][0]['id']
+
+@pytest.fixture(scope='function')
 def random_user(random_email: str) -> str:
     user_password = 'TestPassword123.'
     user_create_response = requests.get(

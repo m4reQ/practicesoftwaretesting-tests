@@ -1,14 +1,11 @@
 import requests
 
-def test_pt2_1(shopping_cart: str):
-    # arrange
-    product_id = requests.get('https://api.practicesoftwaretesting.com/products').json()['data'][0]['id']
-
+def test_pt2_1(shopping_cart: str, product: str):
     # act
     response = requests.post(
         f'https://api.practicesoftwaretesting.com/carts/{shopping_cart}',
         json={
-            'product_id': product_id,
+            'product_id': product,
             'quantity': 1,
         })
     
@@ -17,20 +14,19 @@ def test_pt2_1(shopping_cart: str):
 
     cart_response = requests.get(f'https://api.practicesoftwaretesting.com/carts/{shopping_cart}')
     cart_items = cart_response.json()['cart_items']
-    assert any(x['product_id'].lower() == product_id.lower() for x in cart_items)
+    assert any(x['product_id'].lower() == product.lower() for x in cart_items)
 
-def test_pt2_2(shopping_cart: str):
+def test_pt2_2(shopping_cart: str, product):
     # arrange
-    product_id = requests.get('https://api.practicesoftwaretesting.com/products').json()['data'][0]['id']
     requests.post(
         f'https://api.practicesoftwaretesting.com/carts/{shopping_cart}',
         json={
-            'product_id': product_id,
+            'product_id': product,
             'quantity': 1,
         })
     
     # act
-    response = requests.delete(f'https://api.practicesoftwaretesting.com/carts/{shopping_cart}/product/{product_id}')
+    response = requests.delete(f'https://api.practicesoftwaretesting.com/carts/{shopping_cart}/product/{product}')
 
     # assert
     assert response.status_code == 204
@@ -40,17 +36,14 @@ def test_pt2_2(shopping_cart: str):
 
     assert len(cart_items) == 0
 
-def test_pt2_3(shopping_cart: str):
+def test_pt2_3(shopping_cart: str, product: str):
     # NOTE POST /carts/{cartId} route probably has a bug which results in a wrong error being returned
     
-    # arrange
-    product_id = requests.get('https://api.practicesoftwaretesting.com/products').json()['data'][0]['id']
-
     # act
     response = requests.post(
         f'https://api.practicesoftwaretesting.com/carts/{shopping_cart}',
         json={
-            'product_id': product_id,
+            'product_id': product,
             'quantity': -1,
         })
     
