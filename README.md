@@ -11,3 +11,9 @@ To set up test suite use the following steps:
 - (Optionally) Create and activate the virtual environment (e.g. using venv: `python3 -m venv .venv`)
 - Install required packages: `python3 -m pip install -r ./requirements.txt`
 - Run tests with pytest: `pytest tests`
+
+# Contributors
+Marek Mizerski ([m4reQ](https://github.com/m4reQ))
+Oliwia Duras ([oliviqx](https://github.com/oliviqx))
+Kacper Świercz ([wurpelkrol1](https://github.com/wurpelkrol1))
+Łukasz Połednik ([Emersonle0](https://github.com/Emersonle0))
