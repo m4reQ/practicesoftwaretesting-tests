@@ -82,21 +82,20 @@ def test_pt1_ad1(random_email: str):
     # assert
     assert response.status_code != 201
 
-def test_pt1_ad2():
+def test_pt1_ad2(random_email: str):
+    '''
+    Tests registration using empty address data.
+    '''
+
     # arrange
     payload = {
         'first_name': 'foo',
         'last_name': 'bar',
-        'address': {
-            'street': 'test 4/20',
-            'city': 'Łódź',
-            'state': 'test',
-            'country': 'Poland',
-            'postal_code': '01-001'},
+        'address': {},
         'phone': 'testtesttest',
         'dob': '2000-01-01',
         'password': 'Poziomka13.',
-        'email': 'foo@gmail.com'}
+        'email': random_email}
     
     # act
     response = requests.post(
@@ -104,4 +103,4 @@ def test_pt1_ad2():
         json=payload)
     
     # assert
-    assert response.status_code != 201
+    assert response.status_code == 201
