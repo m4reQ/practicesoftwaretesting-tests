@@ -1,6 +1,3 @@
-from collections.abc import Mapping
-from typing import Any
-
 from selenium.webdriver import Firefox
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
