@@ -11,6 +11,7 @@ To set up test suite use the following steps:
 - (Optionally) Create and activate the virtual environment (e.g. using venv: `python3 -m venv .venv`)
 - Install required packages: `python3 -m pip install -r ./requirements.txt`
 - Run tests with pytest: `pytest tests`
+- Run behave tests with: `behave`
 
 # Contributors
 Marek Mizerski ([m4reQ](https://github.com/m4reQ))  
