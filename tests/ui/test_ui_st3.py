@@ -1,9 +1,7 @@
 from selenium.webdriver import Firefox
 from selenium.webdriver.common.by import By
-from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support.expected_conditions import visibility_of_element_located, text_to_be_present_in_element, visibility_of_all_elements_located
-from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.support.expected_conditions import visibility_of_element_located
 
 def test_pt3_1(driver: Firefox):
     driver.get('https://practicesoftwaretesting.com/contact')
