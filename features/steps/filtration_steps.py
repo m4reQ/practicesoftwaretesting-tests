@@ -6,11 +6,6 @@ from pages.main_page import MainPage
 def step_valid_search_query(context):
     context.valid_search_query = 'Saw'
 
-@behave.when('user opens main page')
-def step_open_main_page(context):
-    context.page = MainPage(context.driver)
-    context.page.open()
-
 @behave.when('user inputs valid search query')
 def step_input_valid_search_query(context):
     context.page.input_search_query(context.valid_search_query)
