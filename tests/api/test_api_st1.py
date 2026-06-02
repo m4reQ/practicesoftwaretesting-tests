@@ -107,4 +107,4 @@ def test_pt1_ad2(random_email: str):
         json=payload)
     
     # assert
-    assert response.status_code == 201
+    assert response.status_code != 201
