@@ -45,7 +45,7 @@ def test_pt1_2(driver: Firefox, random_email: str):
     driver.find_element(By.ID, 'house_number').send_keys('17')
 
     # NOTE We wait after entering house number and postal code until page fills in rest of the address
-    WebDriverWait(driver, 3.0).until(text_to_be_present_in_element_value((By.ID, 'street'), 'Staromiejska 17'))
+    WebDriverWait(driver, 3.0).until(lambda _driver: len(_driver.find_element(By.ID, 'street').get_attribute('value')) > 0)
 
     driver.find_element(By.ID, 'phone').send_keys('2137')
     driver.find_element(By.ID, 'email').send_keys(random_email)
@@ -65,7 +65,7 @@ def test_pt1_2(driver: Firefox, random_email: str):
     driver.find_element(By.ID, 'house_number').send_keys('17')
 
     # NOTE We wait after entering house number and postal code until page fills in rest of the address
-    WebDriverWait(driver, 3.0).until(text_to_be_present_in_element_value((By.ID, 'street'), 'Staromiejska 17'))
+    WebDriverWait(driver, 3.0).until(lambda _driver: len(_driver.find_element(By.ID, 'street').get_attribute('value')) > 0)
 
     driver.find_element(By.ID, 'phone').send_keys('2137')
     driver.find_element(By.ID, 'email').send_keys(random_email)

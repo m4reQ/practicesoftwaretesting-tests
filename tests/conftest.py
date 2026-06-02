@@ -4,10 +4,14 @@ import random
 import requests
 from typing import Generator, Any
 from selenium.webdriver import Firefox
+from selenium.webdriver.firefox.options import Options
 
 @pytest.fixture(scope='function')
 def driver() -> Generator[Firefox, Any, None]:
-    _driver = Firefox()
+    options = Options()
+    options.add_argument("--headless=new")
+    
+    _driver = Firefox(options=options)
     yield _driver
 
     _driver.quit()
